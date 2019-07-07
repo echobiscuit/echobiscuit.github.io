@@ -6,26 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>自己动手写操作系统（二）一个最小的“操作系统” | Biscuit的博客</title>
+  <title>链表反转&amp;交换链表结点 | Biscuit的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一步首先新建一个boot.asm文件，用vim将书中的代码1-1写入文件中，并保存。然后使用nasm编译。附上代码： 123456789101112131415161718org 07c00h    mov    ax,    cs      mov    ds,    ax      mov    es,    ax      call DispStr    jmp $DispStr:">
-<meta name="keywords" content="操作系统">
+  <meta name="description" content="leetcode链表反转链接要求摘要： 反转一个单链表 输入: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL 输出: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NULL 做法是考虑把链表中结点的next指向它的上一个结点，以此来进行反转。">
+<meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自己动手写操作系统（二）一个最小的“操作系统”">
-<meta property="og:url" content="http://yoursite.com/2019/06/07/自己动手写操作系统（二）一个最小的“操作系统”/index.html">
+<meta property="og:title" content="链表反转&amp;交换链表结点">
+<meta property="og:url" content="http://yoursite.com/2019/07/07/链表反转&交换链表结点/index.html">
 <meta property="og:site_name" content="Biscuit的博客">
-<meta property="og:description" content="第一步首先新建一个boot.asm文件，用vim将书中的代码1-1写入文件中，并保存。然后使用nasm编译。附上代码： 123456789101112131415161718org 07c00h    mov    ax,    cs      mov    ds,    ax      mov    es,    ax      call DispStr    jmp $DispStr:">
+<meta property="og:description" content="leetcode链表反转链接要求摘要： 反转一个单链表 输入: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL 输出: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NULL 做法是考虑把链表中结点的next指向它的上一个结点，以此来进行反转。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1Eb7VXoz1gK0jSZLe7629kVXaL.png">
-<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1EU3VXbr1gK0jSZFD7629yVXaK.png">
-<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB12c7VXoz1gK0jSZLe7629kVXax.png">
-<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1RN7WXlr0gK0jSZFn762RRXXam.png">
-<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1H1QWXkL0gK0jSZFA763A9pXaW.png">
-<meta property="og:updated_time" content="2019-07-07T08:31:49.503Z">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1m6.VXkH0gK0jSZPi761vapXaU.png">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1z1EUXeH2gK0jSZJn761T1FXau.png">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1i43UXoz1gK0jSZLe7629kVXaA.png">
+<meta property="og:updated_time" content="2019-07-07T08:38:47.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自己动手写操作系统（二）一个最小的“操作系统”">
-<meta name="twitter:description" content="第一步首先新建一个boot.asm文件，用vim将书中的代码1-1写入文件中，并保存。然后使用nasm编译。附上代码： 123456789101112131415161718org 07c00h    mov    ax,    cs      mov    ds,    ax      mov    es,    ax      call DispStr    jmp $DispStr:">
-<meta name="twitter:image" content="https://ae01.alicdn.com/kf/HTB1Eb7VXoz1gK0jSZLe7629kVXaL.png">
+<meta name="twitter:title" content="链表反转&amp;交换链表结点">
+<meta name="twitter:description" content="leetcode链表反转链接要求摘要： 反转一个单链表 输入: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL 输出: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NULL 做法是考虑把链表中结点的next指向它的上一个结点，以此来进行反转。">
+<meta name="twitter:image" content="https://ae01.alicdn.com/kf/HTB1m6.VXkH0gK0jSZPi761vapXaU.png">
   
     <link rel="alternative" href="/atom.xml" title="Biscuit的博客" type="application/atom+xml">
   
@@ -165,34 +163,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-自己动手写操作系统（二）一个最小的“操作系统”" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-链表反转&amp;交换链表结点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      自己动手写操作系统（二）一个最小的“操作系统”
+      链表反转&amp;交换链表结点
     </h1>
   
 
         
-        <a href="/2019/06/07/自己动手写操作系统（二）一个最小的“操作系统”/" class="archive-article-date">
-  	<time datetime="2019-06-07T08:08:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-07</time>
+        <a href="/2019/07/07/链表反转&交换链表结点/" class="archive-article-date">
+  	<time datetime="2019-07-07T08:38:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h6 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h6><p>首先新建一个boot.asm文件，用vim将书中的代码1-1写入文件中，并保存。然后使用nasm编译。<br>附上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">org 07c00h</span><br><span class="line">    mov    ax,    cs  </span><br><span class="line">    mov    ds,    ax  </span><br><span class="line">    mov    es,    ax  </span><br><span class="line">    call DispStr</span><br><span class="line">    jmp $</span><br><span class="line">DispStr:</span><br><span class="line">    mov    ax,    BootMessage</span><br><span class="line">    mov    bp,    ax  </span><br><span class="line">    mov    cx,    16  </span><br><span class="line">    mov    ax,    01301h</span><br><span class="line">    mov    bx,    000ch</span><br><span class="line">    mov    dl,    0   </span><br><span class="line">    int    10h </span><br><span class="line">    ret </span><br><span class="line">BootMessage:    db    &quot;Hello, OS world!&quot;</span><br><span class="line">times    510-($-$$)    db    0   </span><br><span class="line">dw 0xaa55</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><img src="https://ae01.alicdn.com/kf/HTB1Eb7VXoz1gK0jSZLe7629kVXaL.png" alt="创建，编译bin文件"></p>
-<h6 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h6><p>其次，使用dd命令来生成img文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd conv=sync if=boot.bin of=boot.img bs=1440k count=1</span><br></pre></td></tr></table></figure>
-<p><img src="https://ae01.alicdn.com/kf/HTB1EU3VXbr1gK0jSZFD7629yVXaK.png" alt="制作img文件"></p>
-<h6 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h6><p>最后在Vm中新建虚拟机，选择稍后安装操作系统<br><img src="https://ae01.alicdn.com/kf/HTB12c7VXoz1gK0jSZLe7629kVXax.png" alt="操作系统选择其他"><br>再在设置中添加已经制作好的boot.img<br><img src="https://ae01.alicdn.com/kf/HTB1RN7WXlr0gK0jSZFn762RRXXam.png" alt="添加软盘"><br>这样，基本操作就结束了。<br><img src="https://ae01.alicdn.com/kf/HTB1H1QWXkL0gK0jSZFA763A9pXaW.png" alt="OS启动界面"><br>最小的OS，完成！！！</p>
+        <h5 id="leetcode链表反转链接"><a href="#leetcode链表反转链接" class="headerlink" title="leetcode链表反转链接"></a><a href="https://leetcode-cn.com/problems/reverse-linked-list//" target="_blank" rel="noopener">leetcode链表反转链接</a></h5><p>要求摘要：</p>
+<p>反转一个单链表</p>
+<p>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</p>
+<p>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
+<p>做法是考虑把链表中结点的next指向它的上一个结点，以此来进行反转。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     struct ListNode *next;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struct ListNode* reverseList(struct ListNode* head)&#123;</span><br><span class="line">    if(head==NULL)</span><br><span class="line">        return NULL;</span><br><span class="line">    struct ListNode* pre=NULL;</span><br><span class="line">    struct ListNode* p=head;</span><br><span class="line">    struct ListNode* h=NULL;</span><br><span class="line">    while(p)</span><br><span class="line">    &#123;</span><br><span class="line">        h=p;          //h不断变化，最终为反转链表的头结点</span><br><span class="line">        struct ListNode* tmp=p-&gt;next; //tmp不断指向下一个结点，用于遍历链表  </span><br><span class="line">        p-&gt;next=pre;    //将p结点的指针域由指向p的下一个结点，转而指向p的上一个结点</span><br><span class="line">        pre=p;     //将pre设为当前结点，取下一个结点时，pre即为下一个结点的上一个结点</span><br><span class="line">        p=tmp;             //即p=p-&gt;next，不断取下一个结点</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="两两交换链表中的节点"><a href="#两两交换链表中的节点" class="headerlink" title="两两交换链表中的节点"></a><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">两两交换链表中的节点</a></h5><p>要求摘要：</p>
+<p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
+<p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
+<p>示例：给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3。</p>
+<p>做法：</p>
+<p>每一次操作需要知道三个结点，当前结点的上一个结点tmp，当前结点pre，当前结点的下一个结点tail。可以看做每三个结点一组。其中，本组当前结点pre的上一个结点tmp，是上一组的最后一个节点tail，然后对本组的pre和tail进行交换操作。</p>
+<p><img src="https://ae01.alicdn.com/kf/HTB1m6.VXkH0gK0jSZPi761vapXaU.png" alt></p>
+<p>移动到下一个结点或者说移动到下一组：</p>
+<p><img src="https://ae01.alicdn.com/kf/HTB1z1EUXeH2gK0jSZJn761T1FXau.png" alt></p>
+<p>具体结点交换操作步骤示意图：</p>
+<p><img src="https://ae01.alicdn.com/kf/HTB1i43UXoz1gK0jSZLe7629kVXaA.png" alt></p>
+<p>完整代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     struct ListNode *next;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">truct ListNode* swapPairs(struct ListNode* head)&#123;</span><br><span class="line">	//如果为空返回NULL；只有一个节点原样返回</span><br><span class="line">	if(head==NULL)</span><br><span class="line">		return NULL;</span><br><span class="line">	if(head-&gt;next==NULL)</span><br><span class="line">		return head;</span><br><span class="line"></span><br><span class="line">	struct ListNode* tmp=NULL;  //作用是保存一次循环后的末位节点</span><br><span class="line">	struct ListNode* pre=head;</span><br><span class="line">	struct ListNode* tail=NULL;</span><br><span class="line"></span><br><span class="line">	tail=head-&gt;next; //先进行一次结点交换操作是为了确定头结点</span><br><span class="line">    //结点交换</span><br><span class="line">	pre-&gt;next=tail-&gt;next;</span><br><span class="line">	tail-&gt;next=pre;</span><br><span class="line">	head=tail;</span><br><span class="line">	tmp=pre;  //保存末位节点</span><br><span class="line"></span><br><span class="line">	pre=pre-&gt;next; //当前结点后移，便于下一次操作</span><br><span class="line">	if(pre==NULL || pre-&gt;next==NULL) //如果链表只有两个或三个结点，返回该链表</span><br><span class="line">		return head;</span><br><span class="line"></span><br><span class="line">	while(pre &amp;&amp; pre-&gt;next)</span><br><span class="line">	&#123;</span><br><span class="line">		tail=pre-&gt;next;</span><br><span class="line">		//结点交换</span><br><span class="line">		pre-&gt;next=tail-&gt;next;</span><br><span class="line">		tail-&gt;next=pre;</span><br><span class="line">		tmp-&gt;next=tail;</span><br><span class="line">		tmp=pre; //保存末位节点</span><br><span class="line"></span><br><span class="line">		pre=pre-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>另，附上一个很简洁的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ListNode *swapPairs(ListNode *head) &#123;</span><br><span class="line">        if (!head) return NULL;</span><br><span class="line">        if (!head-&gt;next) return head;</span><br><span class="line">        ListNode *temp = head-&gt;next;</span><br><span class="line">        head-&gt;next = swapPairs(temp-&gt;next);</span><br><span class="line">        temp-&gt;next = head;</span><br><span class="line">        return temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码原帖：<a href="https://blog.csdn.net/stay_the_course/article/details/88729356" target="_blank" rel="noopener">https://blog.csdn.net/stay_the_course/article/details/88729356</a></p>
 
       
 
@@ -227,7 +237,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		
 		</ul>
@@ -283,7 +293,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/07/自己动手写操作系统（二）一个最小的“操作系统”/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/07/链表反转&交换链表结点/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -297,18 +307,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/07/单链表基本操作总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          单链表的基本操作
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/07/自己动手写操作系统（一）环境准备/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">自己动手写操作系统（一）环境准备</div>
+    <a href="/2019/07/07/单链表基本操作总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">单链表的基本操作</div>
       <i class="icon-circle-right"></i>
     </a>
   
